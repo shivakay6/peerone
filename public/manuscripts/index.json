@@ -1,0 +1,27 @@
+[
+  {
+    "file": "PeerOne_Sample_Manuscript_1_Chest_Xray_Triage.docx",
+    "label": "Chest X-ray triage (strong topical overlap, Western Macedonia co-affiliation)",
+    "title": "A Lightweight Convolutional Network for Pneumonia and COVID-19 Triage on Chest Radiographs"
+  },
+  {
+    "file": "PeerOne_Sample_Manuscript_2_Glioma_Segmentation.docx",
+    "label": "Glioma MRI segmentation (medium-strong overlap, no institutional conflicts)",
+    "title": "Transformer-Based Segmentation of Glioma Subregions in Multi-Parametric Brain MRI"
+  },
+  {
+    "file": "PeerOne_Sample_Manuscript_3_Breast_Histopathology.docx",
+    "label": "Breast histopathology, weak supervision (medium overlap, Northwest University co-affiliation)",
+    "title": "Weakly Supervised Classification of Breast Cancer Whole-Slide Images with Attention-Based Multiple Instance Learning"
+  },
+  {
+    "file": "PeerOne_Sample_Manuscript_4_Diabetic_Retinopathy.docx",
+    "label": "Diabetic retinopathy, explainability (tangential overlap, no conflicts)",
+    "title": "Calibrated and Explainable Deep Learning for Diabetic Retinopathy Grading from Fundus Photographs"
+  },
+  {
+    "file": "PeerOne_Sample_Manuscript_5_Federated_Lung_Nodules.docx",
+    "label": "Federated learning on CT (tangential overlap, Mayo Clinic co-affiliation)",
+    "title": "Federated Learning for Privacy-Preserving Lung Nodule Detection Across Hospitals"
+  }
+]

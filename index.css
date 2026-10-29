@@ -1,0 +1,62 @@
+@import "tailwindcss";
+
+/* PeerOne design tokens. Purple is reserved for brand and primary actions;
+   ink and paper carry the interface. */
+@theme {
+  --font-sans: "Hanken Grotesk Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Source Serif 4 Variable", "Iowan Old Style", Georgia, serif;
+
+  --color-ink: #1c1633;
+  --color-ink-2: #4b4565;
+  --color-ink-3: #7b7594;
+  --color-paper: #f6f5fa;
+  --color-surface: #ffffff;
+  --color-rule: #e5e2ee;
+  --color-rule-strong: #cfcadd;
+
+  --color-brand: #5f259f;
+  --color-brand-deep: #4a1d7c;
+  --color-brand-tint: #f1eaf9;
+
+  --color-good: #0f766e;
+  --color-good-tint: #e3f3f1;
+  --color-warn: #b45309;
+  --color-warn-tint: #fdf1e0;
+  --color-bad: #be123c;
+  --color-bad-tint: #fde8ed;
+
+  /* the three scoring signals keep the same colour everywhere they appear */
+  --color-sig-sim: #5f259f;
+  --color-sig-depth: #0f766e;
+  --color-sig-recency: #d08a1c;
+}
+
+html, body, #root { min-height: 100%; }
+body {
+  margin: 0;
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  font-feature-settings: "ss01", "cv11";
+  -webkit-font-smoothing: antialiased;
+}
+.tnum { font-variant-numeric: tabular-nums; }
+
+:focus-visible { outline: 2px solid var(--color-brand); outline-offset: 2px; border-radius: 4px; }
+
+/* One orchestrated moment: score bars grow once when results arrive. */
+@keyframes grow-x { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+.grow-x { transform-origin: left center; animation: grow-x 700ms cubic-bezier(.2,.7,.2,1) both; }
+
+@keyframes drawer-in { from { transform: translateX(24px); opacity: 0; } to { transform: none; opacity: 1; } }
+.drawer-in { animation: drawer-in 220ms ease-out both; }
+
+@keyframes tick { from { opacity: 0; transform: scale(.6); } to { opacity: 1; transform: none; } }
+.tick-in { animation: tick 220ms ease-out both; }
+
+@keyframes spin { to { transform: rotate(360deg); } }
+.spin { animation: spin 900ms linear infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  .grow-x, .drawer-in, .tick-in, .spin { animation: none !important; }
+}

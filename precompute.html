@@ -1,0 +1,24 @@
+<!doctype html><meta charset="utf-8"><title>precompute</title>
+<script type="module">
+  // Build-time helper page: exposes the SAME embedding service the app uses, so corpus vectors
+  // and live manuscript vectors come from identical code, model and runtime.
+  const svc = await import('/services/embeddingService.ts');
+  const texts = await (await fetch('/data/embed_input.json')).json();
+  window.__count = texts.length;
+  window.__embedRange = async (a, b) => {
+    const out = new Float32Array((b - a) * svc.EMBED_DIM);
+    for (let i = a; i < b; i++) out.set(await svc.embedText(texts[i]), (i - a) * svc.EMBED_DIM);
+    const bytes = new Uint8Array(out.buffer); let s = '';
+    for (let i = 0; i < bytes.length; i += 0x8000) s += String.fromCharCode(...bytes.subarray(i, i + 0x8000));
+    return btoa(s);
+  };
+  window.__embedIdx = async (idx) => {
+    const out = new Float32Array(idx.length * svc.EMBED_DIM);
+    for (let k = 0; k < idx.length; k++) out.set(await svc.embedText(texts[idx[k]]), k * svc.EMBED_DIM);
+    const bytes = new Uint8Array(out.buffer); let s = '';
+    for (let i = 0; i < bytes.length; i += 0x8000) s += String.fromCharCode(...bytes.subarray(i, i + 0x8000));
+    return btoa(s);
+  };
+  window.__single = async (t) => Array.from(await svc.embedText(t));
+  window.__ready = true;
+</script>

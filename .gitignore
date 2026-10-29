@@ -1,0 +1,11 @@
+node_modules
+dist
+.vercel
+.env
+.env.*
+__pycache__
+*.log
+data-pipeline/*.json
+data-pipeline/*.bin
+public/data/embed_input.json
+scripts/.manuscript-vectors.json
